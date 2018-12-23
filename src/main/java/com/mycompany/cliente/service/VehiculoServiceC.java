@@ -24,8 +24,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class VehiculoServiceC extends FacadeServiceC {
-    private static final String urlRuta = "http://35.175.88.180:8585/mavenSpringRest-1.0/vehiculo";
-//    private static final String urlRuta = "http://localhost:8080/mavenSpringRest/vehiculo";
+//    private static final String urlRuta = "http://35.175.88.180:8585/mavenSpringRest-1.0/vehiculo";
+    private static final String urlRuta = "http://localhost:8080/mavenSpringRest/vehiculo";
     
     @Override
     public ListaVehiculo getAll() throws JAXBException, IOException{
