@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+    <h:form id="frm01">
+        <div style="display: block; width: 100%; text-align: center" > <h1>REGISTRO DE VEH&Iacute;CULOS</h1></div><br/>
+        <b:commandButton look="primary" value="Nuevo" action="#{viewVehiculo.nuevo()}" update=":frm02" oncomplete="$('.modalPseudoClass').modal()" />
+        <br/><br/>
+        <b:dataTable value="#{viewVehiculo.vehiculos}" var="v" >
+            <b:dataTableColumn label="Matricula">
+                <b:commandButton value="..." action="#{viewVehiculo.selectVehiculo(v)}" update=":frm02" oncomplete="$('.modalPseudoClass').modal()" />
+                <h:outputText value=" #{v.matricula}" />
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Modelo">
+                <h:outputText value="#{v.modelo}" />
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Kilometraje">
+                <h:outputText value="#{v.kilometraje}" />
+            </b:dataTableColumn>
+        </b:dataTable>        
+    </h:form>
+        
+    <h:form id="frm02" >
+        <b:modal id="amodal" title="Vehículo" styleClass="modalPseudoClass">
+            <h:panelGrid columns="1" >
+                <b:inputText label="Matricula" value="#{viewVehiculo.vehiculo.matricula}" />
+                <b:inputText label="Modelo" value="#{viewVehiculo.vehiculo.modelo}" />
+                <b:inputText label="Kilometraje" value="#{viewVehiculo.vehiculo.kilometraje}" />
+            </h:panelGrid>
+            <f:facet name="footer">
+                <b:commandButton look="primary" value="Guardar" action="#{viewVehiculo.guardar()}" ajax="false" />
+                <b:commandButton look="danger" value="Borrar" action="#{viewVehiculo.borrar()}" ajax="false" />
+                <b:button value="Close" dismiss="modal" />
+            </f:facet>
+        </b:modal>
+    </h:form>
+    </h:body>
+
+</html>
+
